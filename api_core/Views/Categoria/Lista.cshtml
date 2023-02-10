@@ -1,0 +1,42 @@
+﻿@model List<ResultadoCategoria>
+@{
+    ViewData["Title"] = "Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        Lista de Categorias
+    </div>
+    <div class="card-body">
+        <a asp-action="Editar" asp-controller="Categoria" asp-route-CategoriaID="0" class="btn btn-success btn-sm">Nuevo Categoria</a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                     <tr>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Accion</th>
+                    <tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoriaID</td>
+                            <td>@item.descripcion</td>
+
+                            <td class="">
+                             <a asp-action="Eliminar" asp-controller="Categoria" asp-route-CategoriaID="@item.CategoriaID" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

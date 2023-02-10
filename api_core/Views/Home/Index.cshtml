@@ -1,0 +1,68 @@
+﻿@using api_core.Models.Response;
+@model List<ProductoCategoria>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="card">
+    <div class="card-header">
+        Lista de productos
+    </div>
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane fade show active">
+                <a asp-action="ProductoCategoria" asp-controller="Home" asp-route-Id="0" class="btn btn-success btn-sm">Nuevo Producto</a>
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col" >Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Accion</th>
+                        <tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Descripcion</td>
+                                    <td>@item.Precio</td>
+                                    <td>@item.Cantidad</td>
+                                    <td>@item.Categoria</td>
+                                    <td>
+                                        <a asp-action="ProductoCategoria" asp-controller="Home" asp-route-Id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
+                                        <a asp-action="Eliminar" asp-controller="Home" asp-route-Id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                                    </td>                                
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="profile">
+
+
+
+
+            </div>
+            <div class="tab-pane fade" id="messages">
+                <h5 class="card-title">Messages tab content</h5>
+                <p class="card-text">Here is some example text to make up the tab's content. Replace it with your own text anytime.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        </div>
+    <div class="card-body">
+
+    </div>
+
+</div>
